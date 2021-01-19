@@ -14,37 +14,15 @@ provider "rke" {
 
 resource "rke_cluster" "cluster" {
   nodes {
-    address = "192.168.116.203"
-    user    = "ubuntu"
-    role    = ["controlplane", "worker", "etcd"]
-    ssh_key = file("~/.ssh/k8s-dev.key")
-  }
-  
-  nodes {
-    address = "192.168.116.226"
-    user    = "ubuntu"
-    role    = ["controlplane", "worker", "etcd"]
-    ssh_key = file("~/.ssh/k8s-dev.key")
-  }
-  
-  nodes {
-    address = "192.168.116.242"
-    user    = "ubuntu"
-    role    = ["controlplane", "worker", "etcd"]
-    ssh_key = file("~/.ssh/k8s-dev.key")
-  }
-  
-  nodes {
-    address = "192.168.116.212"
+    address = ""
     user    = "ubuntu"
     role    = ["controlplane", "worker", "etcd"]
     ssh_key = file("~/.ssh/k8s-dev.key")
   }
   
   addons_include = [
-      "https://raw.githubusercontent.com/rook/rook/master/cluster/examples/kubernetes/rook-operator.yaml",
-      "https://raw.githubusercontent.com/rook/rook/master/cluster/examples/kubernetes/rook-cluster.yaml",
-      "/path/to/manifest",
+      "go-install.sh",
+      "helm-install.sh"
     ]
 }
 
